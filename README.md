@@ -91,6 +91,17 @@ $result = 123;
    * Should the extension append a semicolon at the end of the pasted PHP variable? If set to `false`, it will not append a semicolon.
    * e.g. `$result = "hello world";` vs `$result = 1`.
 
+### Defaults
+```json
+{
+    "json-to-php-code": {
+        "assign-variable": true,
+        "variable-name": "test",
+        "semicolon": true,
+    }
+}
+```
+
 
 
 ## Known Issues
