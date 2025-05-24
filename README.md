@@ -1,71 +1,106 @@
-# json-to-php README
+# JSON to PHP
+Paste JSON data as PHP code. Nice and simple.
 
-This is the README for your extension "json-to-php". After writing up a brief description, we recommend including the following sections.
+## Why?
+Have you found yourself pasting JSON data from a database client such as TablePlus or an API responses into PHP files to run some quick tests with the data? Then you probably had to manually convert the JSON data into a PHP array or object, which can be tedious and error-prone.
 
-## Features
+I couldn't find a VS Code extension that did this exactly how I wanted it. Most of the existing extensions either didn't work as expected, didn't handle all JSON data types correctly, or simply didn't fit my needs.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Under the Hood
+We use the [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method to parse the JSON data and then converts it to a PHP variable using the [`json2php npm package`](https://github.com/daniel-zahariev/json2php).
 
-For example if there is an image subfolder under your extension project workspace:
+## Usage
+If you want to try it out, copy an example JSON data below and run the command `Paste JSON as PHP Variable` from the Command Palette (Ctrl+Shift+P or Cmd+Shift+P on macOS).
 
-\!\[feature X\]\(images/feature-x.png\)
+### Example JSON Object
+```json
+{
+  "name": "John Doe",
+  "age": 30,
+  "isEmployed": true,
+  "skills": ["PHP", "JavaScript", "Python"],
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "country": "USA"
+  }
+}
+```
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+```php
+$result = [
+    'name' => 'John Doe',
+    'age' => 30,
+    'isEmployed' => true,
+    'skills' => [
+        'PHP',
+        'JavaScript',
+        'Python'
+    ],
+    'address' => [
+        'street' => '123 Main St',
+        'city' => 'Anytown',
+        'country' => 'USA'
+    ]
+];
+```
 
-## Requirements
+### Example JSON String
+```json
+"Hello, World!"
+```
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+```php
+$result = 'Hello, World!';
+```
+
+### Example JSON Array
+```json
+["apple", "banana", "cherry"]
+```
+
+```php
+$result = [
+    'apple',
+    'banana',
+    'cherry'
+];
+```
+
+### Example JSON Number
+```json
+123
+```
+
+```php
+$result = 123;
+```
 
 ## Extension Settings
+* [`json-to-php.assign-variable`](vscode://settings/json-to-php.assign-variable)
+   * Default `true`.
+   * Should the extension include the variable decoration (e.g., `$result = `) when pasting JSON data as a PHP variable? If set to `false`, it will only paste the PHP array/object without the variable assignment.
+   * e.g. `$result = 1;` vs `1;`.
+ * [`json-to-php.variable-name`](vscode://settings/json-to-php.variable-name)
+   * Default `result`.
+   * This setting is ignored if `json-to-php.assign-variable` is set to `false`.
+   * The name of the variable to use when pasting JSON data as a PHP variable. You can change this to any valid PHP variable name.
+   * e.g. `$result = 1;` vs `$myVariable = 1;`.
+ * [`json-to-php.semicolon`](vscode://settings/json-to-php.semicolon)
+   * Default `true`.
+   * Should the extension append a semicolon at the end of the pasted PHP variable? If set to `false`, it will not append a semicolon.
+   * e.g. `$result = "hello world";` vs `$result = 1`.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
 
 ## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+No known issues at this time.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release of the extension.
 
 ---
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**

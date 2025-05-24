@@ -1,23 +1,61 @@
 {
   "name": "json-to-php",
   "displayName": "JSON to PHP",
-  "description": "Paste JSON into VS Code as a PHP variable.",
-  "version": "0.0.1",
+  "description": "Paste JSON into VS Code as PHP code.",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.100.0"
   },
+  "icon": "icon.png",
+  "publisher": "angus-mcritchie",
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "json",
+    "php",
+    "paste",
+    "clipboard",
+    "convert"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angus-mcritchie/json-to-php"
+  },
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "json-to-php.helloWorld",
-        "title": "Hello World"
+        "command": "json-to-php.from-clipboard",
+        "title": "Paste JSON as PHP From Clipboard"
+      },
+      {
+        "command": "json-to-php.from-selection",
+        "title": "Convert Selected JSON to PHP"
       }
     ]
+  },
+  "configuration": {
+    "title": "JSON to PHP",
+    "description": "Configure the JSON to PHP extension.",
+    "properties": {
+      "json-to-php.assign-variable": {
+        "type": "boolean",
+        "default": true,
+        "description": "Should the extension include the variable decoration (e.g., `$result = `) when pasting JSON data as a PHP variable?"
+      },
+      "json-to-php.variable-name": {
+        "type": "string",
+        "default": "result",
+        "description": "The name of the variable to use when pasting JSON data as a PHP variable."
+      },
+      "json-to-php.semicolon": {
+        "type": "boolean",
+        "default": true,
+        "description": "Should the extension append a semicolon at the end of the pasted PHP variable?"
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
