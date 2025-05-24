@@ -2,7 +2,7 @@
   "name": "json-to-php-code",
   "displayName": "JSON to PHP Code",
   "description": "Paste JSON into VS Code as PHP code.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.100.0"
   },
