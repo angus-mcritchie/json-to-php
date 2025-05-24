@@ -1,6 +1,6 @@
 {
-  "name": "json-to-php",
-  "displayName": "JSON to PHP",
+  "name": "json-to-php-code",
+  "displayName": "JSON to PHP Code",
   "description": "Paste JSON into VS Code as PHP code.",
   "version": "1.0.0",
   "engines": {
