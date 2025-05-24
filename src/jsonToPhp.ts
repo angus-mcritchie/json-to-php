@@ -64,12 +64,12 @@ function jsonToPhp(json: string): void {
 
     let result = printer(data, indentation);
 
-    if (vscode.workspace.getConfiguration('json-to-php').get('semicolon', true)) {
+    if (vscode.workspace.getConfiguration('json-to-php-code').get('semicolon', true)) {
         result += ';';
     }
 
-    if (vscode.workspace.getConfiguration('json-to-php').get('assign-variable', true)) {
-        result = `$${vscode.workspace.getConfiguration('json-to-php').get('variable-name', 'result')} = ${result}`;
+    if (vscode.workspace.getConfiguration('json-to-php-code').get('assign-variable', true)) {
+        result = `$${vscode.workspace.getConfiguration('json-to-php-code').get('variable-name', 'result')} = ${result}`;
     }
 
     result += `${linebreak}${indentation}`;

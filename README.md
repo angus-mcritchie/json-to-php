@@ -77,16 +77,16 @@ $result = 123;
 ```
 
 ## Extension Settings
-* [`json-to-php.assign-variable`](vscode://settings/json-to-php.assign-variable)
+* [json-to-php-code.assign-variable](vscode://settings/json-to-php-code.assign-variable)
    * Default `true`.
    * Should the extension include the variable decoration (e.g., `$result = `) when pasting JSON data as a PHP variable? If set to `false`, it will only paste the PHP array/object without the variable assignment.
    * e.g. `$result = 1;` vs `1;`.
- * [`json-to-php.variable-name`](vscode://settings/json-to-php.variable-name)
+ * [json-to-php-code.variable-name](vscode://settings/json-to-php-code.variable-name)
    * Default `result`.
-   * This setting is ignored if `json-to-php.assign-variable` is set to `false`.
+   * This setting is ignored if `json-to-php-code.assign-variable` is set to `false`.
    * The name of the variable to use when pasting JSON data as a PHP variable. You can change this to any valid PHP variable name.
    * e.g. `$result = 1;` vs `$myVariable = 1;`.
- * [`json-to-php.semicolon`](vscode://settings/json-to-php.semicolon)
+ * [json-to-php-code.semicolon](vscode://settings/json-to-php-code.semicolon)
    * Default `true`.
    * Should the extension append a semicolon at the end of the pasted PHP variable? If set to `false`, it will not append a semicolon.
    * e.g. `$result = "hello world";` vs `$result = 1`.
